@@ -14,6 +14,11 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
+- task: AWSCLI@1
+  inputs:
+    awsCredentials: 'aws'
+    regionName: 'us-east-1'
+    awsCommand: 'aws s3 list'
 
 - script: |
     npm install
