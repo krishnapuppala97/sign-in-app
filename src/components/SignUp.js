@@ -4,7 +4,7 @@ function SignUp() {
   const [userInput, setUserInput] = useState({
     fullName: '',
     companyEmail: '',
-    phoneNumber: '',
+    MobileNumber: '',
     companyName: '',
     cloudUsage: [],
   });
