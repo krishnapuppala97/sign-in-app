@@ -10,10 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
- - task: AWSShellScript@1
-   inputs:
-     awsCredentials: 'aws'
-     regionName: 'us-east-1'
  - task: Npm@1
    inputs:
      command: 'install'
@@ -22,4 +18,11 @@ steps:
    inputs:
      command: 'custom'
      workingDir: './'
-     customCommand: 'run prod'
+     customCommand: 'run build'
+ - task: S3Upload@1
+   inputs:
+     awsCredentials: 'aws'
+     regionName: 'us-east-1'
+     bucketName: 'test-reactapp-s3'
+     sourceFolder: 'build/'
+     globExpressions: '**'
